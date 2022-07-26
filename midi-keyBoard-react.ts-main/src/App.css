@@ -1,0 +1,1387 @@
+:root {
+  --yellow: #ff9800;
+}
+
+.root2 {
+  display: block;
+  position: fixed;
+  top: calc((100vh - 50vh) - 301px);
+  left: calc((100vw - 50vw) - 201px);
+  z-index: 11;
+}
+
+.entranceWrapperReg {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid black;
+  width: 400px;
+  height: 600px;
+  position: relative;
+  background-color: rgb(207, 207, 207);
+  border-radius: 10px;
+}
+
+.backMark {
+  width: 30px;
+  cursor: pointer;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.eye1, .eye2, .eye3, .eye4, .eye5 {
+  width: 23px;
+  cursor: pointer;
+  position: absolute;
+}
+
+.eye1 {
+  top: 343px;
+  left: 312px;
+}
+
+.eye2 {
+  top: 416px;
+  left: 312px;
+}
+
+.nameTitle {
+  color: #585858;
+  font-size: 2rem;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+.entranceName {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 40px;
+  width: 100%;
+}
+
+.formFactor {
+  width: 70%;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid #ff9800;
+  outline: none;
+}
+
+.buttonRegistration {
+  margin-top: 30px;
+  font-size: 2rem;
+}
+
+.valid {
+  border: 2px solid green;
+}
+
+.noValid {
+  border: 2px solid red;
+}
+
+.invalidFormText {
+  display: none;
+  position: absolute;
+  left: 59px;
+  width: 70%;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  font-weight: bold;
+}
+
+.invalidFormText1 {
+  top: 300px;
+}
+
+.invalidFormText2 {
+  top: 455px;
+}
+
+.root3 {
+  display: block;
+  position: fixed;
+  top: calc((100vh - 50vh) - 145px);
+  left: calc((100vw - 50vw) - 189px);
+  z-index: 11;
+}
+
+.entranceWrapper {
+  width: 376px;
+  height: 288px;
+}
+
+.entranceForm {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 15px;
+  width: 100%;
+}
+
+.eye3 {
+  top: 111px;
+  left: 290px;
+}
+
+.backEntranceMark {
+  width: 30px;
+  cursor: pointer;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.entranceButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+}
+
+.butt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  width: 60%;
+  height: 45px;
+  font-weight: bold;
+  color: #585858;
+  cursor: pointer;
+  background-color: #ff9800;
+  box-shadow: 0px 10px 13px #795548bf;
+  transition-duration: .1s;
+}
+
+.butt:hover {
+  box-shadow: 4px 14px 17px #795548bf;
+}
+
+.butt:active {
+  box-shadow: 4px 8px 11px #795548bf;
+}
+
+.errorEntranceText {
+  color: rgb(207, 207, 207);
+}
+
+.errorActive {
+  color: red;
+  cursor: context-menu;
+}
+
+.wrapper {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 120px;
+  height: 120px;
+}
+
+.usersIcon {
+  position: relative;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+}
+
+.linksWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 250px;
+  height: 300px;
+  position: absolute;
+  top: 126px;
+  left: 152px;
+  z-index: 2;
+  background-color: darkgray;
+  border-radius: 10px;
+  transition-duration: .5s;
+}
+
+.openMark {
+  position: absolute;
+  top: 22px;
+  left: -47px;
+  width: 40x;
+  height: 40px;
+  border-radius: 35px;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  background-color: darkgray;
+  transition-duration: .2s;
+}
+
+.openMark:hover {
+  border-left: 5px solid black;
+  border-bottom: 5px solid black;
+  top: 20px;
+  left: -45x;
+  /* box-shadow: -3px 0px 2px 2px #ff9800; */
+}
+
+.openMark:active {
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  top: 22px;
+  left: -47px;
+}
+
+.linksWrapActive {
+  left: -130px;
+}
+
+.imgMark {
+  width: 100%;
+  height: 100%;
+}
+
+.imgMarkActive {
+   transform: rotate(180deg);
+}
+
+.welcome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: context-menu;
+  color: #673ab7;
+  font-size: 22px;
+  width: 100%;
+  height: 40px;
+  
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 40px;
+  background-color: white;
+  border-radius: 35px;
+  border: 2px solid var(--yellow);
+  box-shadow: 0px 5px 10px white;
+  cursor: pointer;
+  font-family: 'Luxurious Roman', cursive;
+  font-weight: bold;
+  color: rgb(104, 104, 104);
+  transition-duration: .1s;
+}
+
+.links:hover {
+  box-shadow: 0px 9px 14px white;
+}
+
+.links:active {
+  box-shadow: 0px 3px 7px white;
+}
+
+.link1 {
+  font-size: 1rem;
+}
+
+.link1Act {
+  box-shadow: none;
+  background-color: rgb(131 130 130);
+  border: none;
+}
+
+.link1Act:hover {
+  box-shadow: none;
+}
+
+/* .link2 {
+
+}
+
+.link3 {
+
+} */
+
+.iconsWrapper {
+  position: absolute;
+  top: 431px;
+  left: 152px;
+  width: 1200px;
+  height: 240px;
+  z-index: 2;
+  background-color: black;
+  border: 2px solid var(--yellow);
+  transition-duration: .5s;
+}
+
+.icons {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap;
+}
+
+.icon {
+  width: 110px;
+  height: 110px;
+  padding: 5px;
+  cursor: pointer;
+  transition-duration: .3s;
+}
+
+.icon:hover {
+  box-shadow: 0px 0px 5px 5px var(--yellow);
+}
+
+.wrapName {
+  top: 0px;
+  left: 300px;
+  justify-content: center;
+}
+
+.nameImgClose {
+  width: 35px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+}
+
+.wrapNameActive {
+  left: 0px;
+}
+
+.nameCases {
+  cursor: auto;
+  box-shadow: none;
+  outline: none;
+}
+
+.nameCases:hover {
+  box-shadow: none;
+}
+.nameCases:active {
+  box-shadow: none;
+}
+
+.textErr {
+  color:red;
+  opacity: 0;
+  transition-duration: .1s;
+}
+
+.caseButt {
+  width: 40%;
+}
+
+.root4 {
+  margin: auto;
+  display: flex;
+  background: url(./png/png5.jpg);
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 70px;
+}
+
+.buttonExit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 80px;
+  height: 30px;
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: #c5c5c5;
+  cursor: pointer;
+  transition-duration: .2s;
+}
+
+.buttonExit:hover {
+  box-shadow: 0px 0px 5px 5px var(--yellow);
+}
+
+.buttonExit:active {
+  box-shadow: 0px 0px 2px 2px var(--yellow);
+  transition-duration: .1s;
+}
+
+.bodyShadow {
+  background-color: rgb(0 0 0 / 68%);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.note {
+  width: 70%;
+  height: 35%;
+  background-color: #c5c5c5;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.title {
+  font-size: 28px; 
+  padding: 20px;
+  align-self: center;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+}
+
+.songNames {
+  margin-left: 200px;
+}
+
+.song {
+  height: 20px;
+  font-size: 24px; 
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+  color: #0057a3;
+  cursor: pointer; 
+  margin: 29px;
+  transition-duration: .2s;
+}
+
+.song:hover {
+  font-size: 26px;
+}
+
+.text {
+  display: flex;
+  justify-self: center; 
+  align-self: center;
+  font-size: 22px; 
+  font-weight: bold;
+  padding: 10px;
+  font-family: 'Cinzel', serif;
+}
+
+.buttWrapper {
+  display: flex; 
+  justify-content: end; 
+  align-items: end;
+  flex-direction: row; 
+  width: 70%;
+}
+
+.buttPlay {
+  display: flex; 
+  justify-content: center; 
+  justify-self: end; 
+  align-items: center; 
+  align-self: end;
+  width: 8%; 
+  height: 36px; 
+  font-size: 22px;
+  font-family: 'Cinzel', serif;
+  border: 1px solid #898989; 
+  border-radius: 10px;
+  cursor: pointer; 
+  margin: 10px; 
+  transition-duration: .3s;
+}
+
+.buttPlay:hover {
+  box-shadow: 0px 0px 5px 5px var(--yellow);
+}
+
+.buttPlay:active {
+  box-shadow: 0px 0px 2px 2px var(--yellow);
+  transition-duration: .1s;
+}
+
+.piano {
+  display: flex; 
+  flex-direction: row; 
+  position: relative;
+  width: 1350px; 
+  height: 45%; 
+  z-index: 2; 
+}
+
+.blackKey {
+  display: flex;
+  justify-content: center; 
+  align-items: end; 
+  width: 4%; 
+  height: 50%; 
+  color: white; 
+  font-size: 10px;
+  background-color: black; 
+  border-bottom: solid 0.8rem black; 
+  border-left: solid 0.3rem black;
+  border-right: solid 0rem black; 
+  position: absolute; 
+  top: 0; 
+  transition-duration: 0.05s; 
+}
+
+.key {
+  display: flex; 
+  justify-content: center;
+  align-items: end; 
+  width: 6.6%; 
+  height: 90%; 
+  border-radius: 5%; 
+  border: 1px solid black; 
+  background-color: white; 
+  position: absolute; 
+  top: 0px
+}
+
+.backAvatar {
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  top: 0px;
+  left: -40px;
+  background-color: white;
+  border-radius: 50%;
+  transform: rotate(180deg);
+  transition-duration: .1s;
+}
+
+.backAvatar:hover {
+  box-shadow: 0px 0px 5px 5px var(--yellow);
+}
+
+.backAvatar:active {
+  box-shadow: 0px 0px 2px 2px var(--yellow);
+}
+
+.eye4 {
+  top: 78px;
+  left: 198px;
+}
+
+.eye5 {
+  top: 142px;
+  left: 198px;
+}
+
+.iconsWrapperActive1 {
+  left: calc(-30vw - 542px);
+}
+
+.iconsWrapperActive2 {
+  left: calc(-30vw - 411px);
+}
+
+body {
+  margin: auto;
+  overflow: hidden;
+  background-color: black;
+}
+
+.root1 {
+  display: block;
+}
+
+.clock {
+  width: 100vw;
+  height: 5vh;
+  background-color: black;
+  color: white;
+  font-size: 36px;
+}
+
+.picture {
+  width: 100vw;
+  height: 95vh;
+  position: relative;
+  background: url(./png/png3.jpg);
+}
+
+.pictureContent {
+  color: yellow;
+  font-size: 44px;
+  z-index: 2;
+  position: absolute;
+  left: -45%;
+  transition-duration: 2s;
+}
+
+.message {
+  position: fixed;
+  top: calc((100vh - 50vh) - 98px);
+  left: calc((100vw - 50vw) - 280px);
+  color: yellow;
+  font-size: 33px;
+  background-color: grey;
+  width: 561px;
+  height: 196px;
+  z-index: 11;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition-duration: .5s;
+}
+
+.pictureShadow {
+  background-color: rgb(0 0 0 / 68%);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.pictureFirstContent1 {
+  top: 25%; 
+  left: calc((100vw - 50vw) - 412px);
+}
+
+.pictureFirstContent2 {
+  top: 38%; 
+  left: calc((100vw - 50vw) - 336px);
+}
+
+.pictureFirstContent3 { 
+  top: 58%; 
+  left: calc((100vw - 50vw) - 275px);
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 550px;
+  position: relative;
+}
+
+.button {
+  background-color: #795548bf;
+  width: 190px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--yellow);
+  border-radius: 35px;
+  cursor: pointer;
+  transition-duration: .2s;
+  position: absolute;
+  top: 0px;
+}
+
+.button:hover {
+  box-shadow: 0px 10px 13px #795548bf; top: -5px;;
+}
+
+.button:active {
+  box-shadow: 0px 5px 8px #795548bf; top: 0px;
+}
+
+.buttonLogIn {
+  left: 360px;
+}
+
+@media (max-width: 1300px) and (max-height: 610px) {
+  .piano {
+    width: 1177px;
+  }
+
+  .iconsWrapper {
+    top: 280px;
+  }
+
+  .iconsWrapperActive1 {
+    left: calc(48vw - 542px)
+  }
+}
+
+@media (orientation: landscape) and (min-width: 800px) and (max-width: 1300px) {
+
+  .root2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.entranceWrapperReg {
+    height: auto;
+    width: 610px;
+    padding: 20px 0;
+}
+
+.entranceName {
+    row-gap: 4px;
+}
+
+.nameTitle {
+    padding-bottom: 0px;
+}
+
+.invalidFormText {
+    left: 45px;
+}
+
+.invalidFormText1 {
+    top: 232px;
+    left: 4px;
+}
+
+.invalidFormText2 {
+    top: 232px;
+    left: 277px;
+}
+
+.eye1, .eye2 {
+    left: 30rem;
+}
+
+.eye1 {
+    top: 15.85rem;
+}
+
+.eye2 {
+    top: 19.7rem;
+}
+
+.buttonRegistration {
+    margin-top: 20px;
+}
+
+.root3 {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 20%;
+  left: 0px;
+  width: 100vw;
+    
+}
+
+.entranceWrapper {
+    width: 300px;
+    height: 250px;
+    align-self: center;
+}
+
+.eye3 {
+    top: 92px;
+    left: 224px;
+}
+
+  .clock {
+      padding-left: 15px;
+      font-size: 10vh;
+      width: 80%;
+      height: 10vh;
+  }
+
+  .picture {
+      background: url(./png/png3.jpg) repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+  }
+
+  .message {
+      top: calc((100vh - 50vh) - 94px);
+      left: calc((100vw - 50vw) - 225px);
+      width: 450px;
+      height: 188px;
+      font-size: 26px;
+  }
+
+  .pictureContent {
+      position: relative;
+      top: 0px;
+      left: 0px;
+      text-align: center;
+      padding: 0px 15px;
+      font-size: 28px;
+  }
+
+  .buttonWrapper {
+      display: flex;
+      width: 229px;
+      position: relative;
+      top: 0px;
+      left: 0px;
+      flex-direction: column;
+      align-items: center;
+      height: 130px;
+  }
+
+.button {
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+}
+
+@media (orientation: portrait) and (min-width: 480px) and (max-width: 900px) {
+
+  .root2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.entranceWrapperReg {
+    height: 525px;
+    width: 310px;
+}
+
+.invalidFormText {
+    left: 45px;
+}
+
+.invalidFormText1 {
+    top: 279px;
+}
+
+.invalidFormText2 {
+    top: 440px;
+}
+
+.eye1, .eye2 {
+    left: 231px;
+}
+
+.eye1 {
+    top: 323px;
+}
+
+.eye2 {
+    top: 397px;
+}
+
+  .root3 {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 30%;
+    left: 0px;
+    width: 100vw;
+}
+
+.entranceWrapper {
+    width: 300px;
+    align-self: center;
+}
+
+.eye3 {
+    left: 224px;
+}
+
+  .clock {
+      padding-left: 15px;
+      font-size: 5vh;
+      width: 80%;
+  }
+
+  .picture {
+      background: url(./png/png3.jpg) repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+  } 
+
+  .message {
+      top: calc((100vh - 50vh) - 94px);
+      left: calc((100vw - 50vw) - 225px);
+      width: 450px;
+      height: 188px;
+      font-size: 26px;
+  }
+
+  .pictureContent {
+      position: relative;
+      top: 0px;
+      left: 0px;
+      text-align: center;
+      padding: 0px 15px;
+      font-size: 28px;
+  }
+
+  .buttonWrapper {
+      display: flex;
+      width: 229px;
+      position: relative;
+      top: 0px;
+      left: 0px;
+      flex-direction: column;
+      align-items: center;
+      height: 169px;
+  }
+
+  .button {
+      position: relative;
+      top: 0px;
+      left: 0px;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 650px) and (max-width: 900px) {
+
+  .root2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.entranceWrapperReg {
+    height: 310px;
+    width: 610px;
+}
+
+.entranceName {
+    row-gap: 4px;
+}
+
+.nameTitle {
+    padding-bottom: 0px;
+}
+
+.invalidFormText {
+    left: 45px;
+}
+
+.invalidFormText1 {
+    top: 232px;
+    left: 4px;
+}
+
+.invalidFormText2 {
+    top: 232px;
+    left: 277px;
+}
+
+.eye1, .eye2 {
+    left: 231px;
+}
+
+.eye1 {
+    top: 323px;
+}
+
+.eye2 {
+    top: 397px;
+}
+
+.buttonRegistration {
+    margin-top: 20px;
+}
+
+  .root3 {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 20%;
+    left: 0px;
+    width: 100vw;
+    
+}
+
+.entranceWrapper {
+    width: 300px;
+    height: 250px;
+    align-self: center;
+}
+
+.eye3 {
+    top: 92px;
+    left: 224px;
+}
+
+  .wrapper {
+    top: calc((100vh - 80vh) - 40px);
+    width: 80px;
+    height: 80px;
+    right: calc((100vw - 93vw) - 40px);
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+}
+
+.linksWrap {
+    top: calc((100vh - 45vh) - 125px);
+    height: 250px;
+    left: calc((100vw - 88.1vw));
+}
+
+.linksWrapActive {
+    left: calc((100vw - 118vw));
+    top: calc((100vh - 45vh) - 125px);
+}
+
+.wrapName {
+    top: 0px;
+    left: calc(0vw + 251px);
+
+}
+
+.iconsWrapper {
+    left: calc((100vw - 50vw) - 316px);
+    top: 0px;
+    width: 632px;
+    height: 266px;
+}
+
+.wrapNameActive {
+    left: 0px;
+    top: 0px;
+}
+
+.icon {
+    padding: 0px;
+}
+
+  .root4 {
+    row-gap: 10px;
+    width: 100vw;
+    height: 100vh;
+}
+
+.songNames {
+    margin-left: calc((100vw - 80vw) - 90px);
+}
+
+.title {
+    font-size: 18px;
+    padding: 8px;
+}
+
+.song {
+    font-size: 16px;
+    margin: 0px 5px;
+}
+
+.text {
+    font-size: 16px;
+}
+
+.buttPlay {
+    font-size: 16px;
+    height: 24px;
+    margin: 4px 10px;
+    width: 10%;
+}
+
+.piano {
+    width: 650px;
+}
+
+.key {
+    font-size: 11px;
+}
+
+
+.buttonExit {
+    left: calc((100vw - 92vw) - 40px);
+    top: calc((100vh - 90vh) - 15px);
+}
+
+.eye4 {
+    top: 54px;
+}
+
+.eye5 {
+    top: 119px;
+}
+
+  .clock {
+      padding-left: 15px;
+      font-size: 10vh;
+      width: 80%;
+      height: 10vh;
+  }
+
+  .picture {
+      background: url(./png/png3.jpg) repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+  }
+
+  .message {
+      top: 110px;
+      left: 144px;
+      font-size: 19px;
+  }
+
+  .pictureContent {
+      position: relative;
+      top: 0px;
+      left: 0px;
+      text-align: center;
+      padding: 0px 15px;
+      font-size: 28px;
+  }
+
+  .buttonWrapper {
+      display: flex;
+      width: 229px;
+      position: relative;
+      top: 0px;
+      left: 0px;
+      flex-direction: column;
+      align-items: center;
+      height: 130px;
+  }
+
+  .button {
+      position: relative;
+      top: 0px;
+      left: 0px;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 320px) and (max-width: 475px) {
+
+  .root2 {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    position: absolute;
+    top: 70px;
+    left: 0px;
+}
+
+.entranceWrapperReg {
+    height: 525px;
+    width: 310px;
+}
+
+.invalidFormText {
+    left: 45px;
+}
+
+.invalidFormText1 {
+    top: 279px;
+}
+
+.invalidFormText2 {
+    top: 440px;
+}
+
+.eye1, .eye2 {
+    left: 231px;
+}
+
+.eye1 {
+    top: 323px;
+}
+
+.eye2 {
+    top: 397px;
+}
+
+  .root3 {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 30%;
+    left: 0px;
+    width: 100vw;
+}
+
+.entranceWrapper {
+    width: 300px;
+    align-self: center;
+}
+
+.eye3 {
+    left: 224px;
+}
+
+  .wrapper {
+    top: calc((100vh - 80vh) - 40px);
+    width: 80px;
+    height: 80px;
+    right: calc((100vw - 93vw) - 40px);
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+}
+
+.linksWrap {
+    top: calc((100vh - 45vh) - 125px);
+    height: 250px;
+    left: calc((100vw - 88.1vw));
+}
+
+.linksWrapActive {
+    left: calc((100vw - 118vw));
+    top: calc((100vh - 45vh) - 125px);
+}
+
+.wrapName {
+    top: 0px;
+    left: calc(0vw + 251px);
+
+}
+
+.iconsWrapper {
+    left: calc((100vw - 50vw) - 316px);
+    top: 0px;
+    width: 632px;
+    height: 266px;
+}
+
+.wrapNameActive {
+    left: 0px;
+    top: 0px;
+}
+
+.icon {
+    padding: 0px;
+}
+
+  .root4 {
+    transform: rotate(90deg);
+    top: 58.1vw;
+    left: 0px;
+    width: 100vh;
+    height: 100vw;
+    row-gap: 10px;
+}
+
+.songNames {
+    margin-left: calc((100vw - 80vw) - 90px);
+}
+
+.title {
+    font-size: 18px;
+    padding: 8px;
+}
+
+.song {
+    font-size: 16px;
+    margin: 0px 5px;
+}
+
+.text {
+    font-size: 16px;
+}
+
+.buttPlay {
+    font-size: 16px;
+    height: 24px;
+    margin: 4px 10px;
+    width: 10%;
+}
+
+.piano {
+    width: 650px;
+}
+
+.key {
+    font-size: 11px;
+}
+
+
+.buttonExit {
+    left: calc((100vw - 92vw) - 40px);
+    top: calc((100vh - 90vh) - 15px);
+}
+
+.eye4 {
+    top: 54px;
+}
+
+.eye5 {
+    top: 119px;
+}
+
+  .clock {
+      padding-left: 15px;
+      font-size: 5vh;
+      width: 80%;
+  }
+
+  .picture {
+      background: url(./png/png3.jpg) repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+  } 
+
+  .message {
+      top: 298px;
+      left: calc((100vw - 50vw) - 155px);
+      width: 310px;
+      height: 126px;
+      font-size: 19px;
+  }
+
+  .pictureContent {
+      position: relative;
+      top: 0px;
+      left: 0px;
+      text-align: center;
+      padding: 0px 15px;
+      font-size: 28px;
+  }
+
+  .buttonWrapper {
+      display: flex;
+      width: 229px;
+      position: relative;
+      top: 0px;
+      left: 0px;
+      flex-direction: column;
+      align-items: center;
+      height: 169px;
+  }
+
+  .button {
+      position: relative;
+      top: 0px;
+      left: 0px;
+  }
+}
