@@ -13,7 +13,7 @@ import { nameExpretion, passwordExpretion } from '../appService/RegExpr'
 
 interface RegistrationInterface {
     name: string,
-    surname: string,
+    // surname: string,
     email: string,
     password: string,
     repeatPassword: string
@@ -65,7 +65,7 @@ const Registration = () => {
                         className='formFactor'
                     />
                     <ValidError errorsObject={errors.name} errorsMessage={errors.name?.message} />
-                    <input 
+                    {/* <input 
                         {...register('surname', {
                             required: 'Surname is require field',
                             pattern: {
@@ -79,7 +79,7 @@ const Registration = () => {
                         title='The surname should contain 1-15 letters either Latin or Cyrillic language'
                         className='formFactor'
                     />
-                    <ValidError errorsObject={errors.surname} errorsMessage={errors.surname?.message} />
+                    <ValidError errorsObject={errors.surname} errorsMessage={errors.surname?.message} /> */}
                     <input 
                         {...register('email',{
                             required: 'Email is require field',

@@ -13,4 +13,5 @@ export default async function getIcons(): Promise<[]> {
     const rezolve = await respons.data
     const date = rezolve
     return date.results
-  }
+}
+
