@@ -14,5 +14,8 @@ router.post('/registration',
 router.post('/login', userController.login)
 router.post('/logout', userController.logout)
 router.put('/changename', userController.changeName)
-router.put('/changepass', userController.changePass)
 router.get('/refresh', userController.refresh)
+router.get('/users', userController.getUsers)
+
+
+module.exports = router

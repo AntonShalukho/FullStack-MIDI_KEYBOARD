@@ -1,7 +1,6 @@
 const UserDto = require('../dtos/user-dto');
 const ApiError = require('../exceptions/api-error');
 const UserModel = require('../models/user-model.js');
-const UserDto = require('../dtos/user-dto.js')
 const tokenService = require('./token-service.js');
 const bcryptjs = require('bcryptjs');
 const tokenModel = require('../models/token-model');
@@ -48,7 +47,7 @@ class UserService {
         return token
     }
 
-    async changeName(name, newName, refreshToken) {
+    async changeName(newName, refreshToken) {
         if(!refreshToken) {
             throw ApiError.UnauthorizedError();
         }
@@ -59,45 +58,13 @@ class UserService {
         }
 
         const user = await UserModel.findById(userData.id);
-        if(user.name !== name) {
-            throw ApiError.BadRequest('Invalid name')
-        }
-
         user.name = newName;
         await user.save()
 
         const tokens = await this.getToken(user);
         return tokens
     }
-
-    async changePass(password, newPassword, refreshToken) {
-        if(!refreshToken) {
-            throw ApiError.UnauthorizedError();
-        }
-
-        const userData = tokenService.validateRefreshToken(refreshToken);
-        if(!userData) {
-            throw ApiError.UnauthorizedError()
-        }
-
-        const user = await UserModel.findById(userData.id);
-        if(!user) {
-            throw ApiError.UnauthorizedError()
-        }
-
-        const isPassEquats = await bcryptjs.compare(password, user.password);
-        if(!isPassEquats) {
-            throw ApiError.BadRequest('Invalid password')
-        }
-
-        const hashNewPassword = await bcryptjs.hash(newPassword, 7);
-        user.password = hashNewPassword;
-        await user.save();
-
-        const tokens = await this.getToken(user);
-        return tokens
-    }
-
+    
     async refresh(refreshToken) {
         if(!refreshToken) {
             throw ApiError.UnauthorizedError();

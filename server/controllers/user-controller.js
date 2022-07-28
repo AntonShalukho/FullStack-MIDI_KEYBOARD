@@ -1,5 +1,5 @@
 const ApiError = require("../exceptions/api-error");
-const userService = require("../services/user-service");
+const UserService = require("../services/user-service");
 const {validationResult} = require('express-validator')
 
 class UserController {
@@ -12,7 +12,7 @@ class UserController {
             }
 
             const {name, email, password} = req.body;
-            const userData = await userService.registration(name, email, password)
+            const userData = await UserService.registration(name, email, password)
             res.cookie('refreshToken', userData.refreshToken, {maxAge: 90 * 24 * 60 * 1000, httpOnly: true})
             return res.json(userData)
         } catch (e) {
@@ -22,8 +22,10 @@ class UserController {
 
     async login(req, res, next) {
         try {
-            const {email, password} = req.body
-
+            const {email, password} = req.body;
+            const userData = await UserService.login(email, password);
+            res.cookie('refreshToken', userData.refreshToken, {maxAge: 90 * 24 * 60 * 1000, httpOnly: true})
+            return res.json(userData)
         } catch (e) {
             next(e)
         }
@@ -31,35 +33,45 @@ class UserController {
 
     async logout(req, res, next) {
         try {
-            
+            const {refreshToken} = req.cookies;
+            const token = await UserService.logout(refreshToken);
+            res.clearCookie('refreshToken');
+            return res.json(token);
         } catch (e) {
-            console.log(e)
+            next(e)
         }
     }
 
     async changeName(req, res, next) {
         try {
-            
+            const {refreshToken} = req.cookies;
+            const {newName} = req.body;
+            const userData = await UserService.changeName(newName, refreshToken);
+            return res.json('Nema has been chenged')
         } catch (e) {
-            console.log(e)
-        }
-    }
-
-    async changePass(req, res, next) {
-        try {
-            
-        } catch (e) {
-            console.log(e)
+            next(e)
         }
     }
     
     async refresh(req, res, next) {
         try {
-            
+            const { refreshToken } = req.cookies;
+            const userData = await UserService.refresh(refreshToken);
+            res.cookie('refreshToken', userData.refreshToken, {maxAge: 90 * 24 * 60 * 1000, httpOnly: true})
+            return res.json(userData);
         } catch (e) {
-            console.log(e)
+            next(e)
+        }
+    }
+
+    async getUsers(req, res, next) {
+        try {
+            // const users = UserModel.find()
+            res.json('Hello')
+        } catch (e) {
+            next(e)
         }
     }
 }
 
-module.exports = new UserController()
+module.exports = new UserController
