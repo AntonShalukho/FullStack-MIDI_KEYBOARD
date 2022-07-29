@@ -1,60 +1,47 @@
-import React, { useEffect, useRef } from 'react'
-import Button from '../UI/Button'
-import Entrance from './Entrance'
+import React from 'react'
 import Clock from './Clock'
-import { useDispatch, useSelector } from 'react-redux'
-import { toggleEntranceState } from '../store/slices/EntranceSlice'
-import { toggleRegistrationState } from '../store/slices/RegistrationSlice'
-import Registration from './Registration'
-import { selectorEnrtance } from '../store'
-import { selectorRegistration } from '../store'
+import { Link, Outlet, useLocation } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { selectorRegistrationMessage } from '../store'
 
 const FirstPage = () => {
-    const isEntrance = useSelector(selectorEnrtance)
-    const isRegistration = useSelector(selectorRegistration)
-    const backShedow = useRef<HTMLDivElement>(null!)
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        isBackShedow()
-    },[isEntrance, isRegistration])
-
-
-    function isBackShedow() {
-        if(isEntrance || isRegistration) {
-            backShedow.current.style.zIndex = '2'
-        } else {
-            backShedow.current.style.zIndex = '0'
-        }
-    }
-    function getEntrance() {
-        if (isEntrance) {
-            return <Entrance/>
-        }
-    }
-    function getRegistration() {
-        if (isRegistration) {
-            return <Registration/>
-        }
-    }
+    const location = useLocation()
+    const isRegistrationMessage = useSelector(selectorRegistrationMessage)
     
     return (
         <div className="root1">
             <Clock/>
             <div className="picture">
-                <div className="message">'You have been successfully registered'</div>
+                <div 
+                    className="message"
+                    style={
+                        isRegistrationMessage
+                        ?   {opacity: '1'}
+                        :   {opacity: '0'}
+                    }
+                >
+                    {isRegistrationMessage
+                        ?   'You have been successfully registered'
+                        :   'Some thing is wrong'
+                    }
+                    
+                </div>
                 <div className="pictureContent pictureFirstContent1">Would you like to learn how to play the piano?</div>
                 <div className="pictureContent pictureFirstContent2">You can achieve your dreams with us!</div>
                 <div className="pictureContent pictureFirstContent3">
                     <div className="buttonWrapper">
-                        <Button buttClass='button buttonLogOn' text='Log on' toggle={() => dispatch(toggleEntranceState())}/>
-                        <Button buttClass='button buttonLogIn' text='Log in' toggle={() => dispatch(toggleRegistrationState())}/>
+                        <Link to={'entrance'} className='button buttonLogOn' >Log on</Link>
+                        <Link to={'registration'} className='button buttonLogOn' >Log in</Link>
                     </div>
                 </div>
-                <div className="pictureShadow" ref={backShedow}></div>
+                <div className="pictureShadow" style={
+                    location.pathname === '/registration' || location.pathname === '/entrance' || isRegistrationMessage
+                        ? {zIndex: '2'} 
+                        : {zIndex: '0'}
+                    } 
+                ></div>
             </div>
-            {getEntrance()}
-            {getRegistration()}
+            <Outlet/>
         </div>
     )
 }

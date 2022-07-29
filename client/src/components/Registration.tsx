@@ -1,15 +1,16 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { toggleRegistrationState } from '../store/slices/RegistrationSlice'
-import backSVG from '../png/backSVG.svg'
-import eyeDisible from '../png/eye-disible.svg'
-import eyeAble from '../png/eye-visible.svg'
+// import { toggleRegistrationState } from '../store/slices/RegistrationSlice'
 import { selectorRegistrationEye1, selectorRegistrationEye2 } from '../store'
 import { disabledRegistrationEye1, toggleRegistrationEye1 } from '../store/slices/RegistrationEye1Slice'
 import { disabledRegistrationEye2, toggleRegistrationEye2 } from '../store/slices/RegistrationEye2Slice'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import ValidError from '../UI/ValidError'
 import { nameExpretion, passwordExpretion } from '../appService/RegExpr'
+import { useNavigate } from 'react-router-dom'
+import ImgService from '../appService/ImgService'
+import AuthController from '../appService/AuthController'
+import { toggleRegistrationMessage } from '../store/slices/RegistrationMessageSlice'
 
 interface RegistrationInterface {
     name: string,
@@ -24,13 +25,21 @@ const Registration = () => {
     const isDisibledEye1 = useSelector(selectorRegistrationEye1)
     const isDisibledEye2 = useSelector(selectorRegistrationEye2)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const {register, handleSubmit, formState: {errors}, reset, getValues} = useForm<RegistrationInterface>({
         mode: 'onBlur'
     })
 
-    const onSubmit: SubmitHandler<RegistrationInterface> = (data) => {
-        console.log('data: ', data)
+    const onSubmit: SubmitHandler<RegistrationInterface> = async (data) => {
+        const {name, email, password} = data;
+        const controller = new AuthController();
+        const respons = await controller.registration(name, email, password)
+        if(respons) {
+            navigate(-1);
+            dispatch(toggleRegistrationMessage())
+            setTimeout(() => {dispatch(toggleRegistrationMessage())}, 2000)
+        }
     }
 
 
@@ -39,13 +48,13 @@ const Registration = () => {
         <div>
             <form className="entranceWrapperReg" onSubmit={handleSubmit(onSubmit)}>
                 <img 
-                    src={backSVG} 
+                    src={ImgService.backSVG} 
                     alt="go back" 
                     className="backMark" 
                     onClick={() => {
-                        dispatch(toggleRegistrationState())
-                        dispatch(disabledRegistrationEye1())
-                        dispatch(disabledRegistrationEye2())
+                        dispatch(disabledRegistrationEye1());
+                        dispatch(disabledRegistrationEye2());
+                        navigate(-1)
                     }}
                 />
                 <div className="entranceName">
@@ -149,8 +158,8 @@ const Registration = () => {
                     <img 
                         src={
                             isDisibledEye1
-                            ?   eyeAble
-                            :   eyeDisible
+                            ?   ImgService.eyeAbles
+                            :   ImgService.eyeDisible
                         } 
                         alt="show password" 
                         className="eye1"
@@ -159,8 +168,8 @@ const Registration = () => {
                     <img 
                         src={
                             isDisibledEye2
-                            ?   eyeAble
-                            :   eyeDisible
+                            ?   ImgService.eyeAbles
+                            :   ImgService.eyeDisible
                         }   
                         alt="show password" 
                         className="eye2"

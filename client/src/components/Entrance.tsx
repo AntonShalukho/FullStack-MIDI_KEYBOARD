@@ -1,25 +1,31 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { toggleEntranceState } from '../store/slices/EntranceSlice'
-import { disabledEye3, toggleEntranceEye } from '../store/slices/Eye3Slice'
-import backSVG from '../png/backSVG.svg'
-import eyeDisible from '../png/eye-disible.svg'
-import eyeAbles from '../png/eye-visible.svg'
+import { toggleEntranceEye } from '../store/slices/Eye3Slice'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { selectorEnrtanceEye } from '../store'
+import { useNavigate } from 'react-router-dom'
+import ImgService from '../appService/ImgService'
+import AuthController from '../appService/AuthController'
 
 interface EntranceInterface {
     email: string,
     password: string,
 }
 
-const Entrance = () => {
+const Entrance: FC = () => {
     const isDisibleEye = useSelector(selectorEnrtanceEye)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const {register, handleSubmit} = useForm<EntranceInterface>()
-    const onSubmit: SubmitHandler<EntranceInterface> = (data) => {console.log(data)}
-
+    const onSubmit: SubmitHandler<EntranceInterface> = async (data) => {
+        const {email, password} = data;
+        const controller = new AuthController()
+        const respons = await controller.login(email, password)
+        if(respons) {
+            navigate('/piano')
+        }
+    }
 
   return (
     <div className="root3">
@@ -30,6 +36,7 @@ const Entrance = () => {
                     type="email" 
                     id="entranceEmail" 
                     className="formFactor"
+                    placeholder='Email'
                 />
                 <input 
                     {...register('password')} 
@@ -40,6 +47,7 @@ const Entrance = () => {
                     } 
                     id="entrancePassword" 
                     className="formFactor"
+                    placeholder='Password'
                 />
                 <div className="errorEntranceText">Invalid email or password</div>
                 <div className="entranceButtons">
@@ -51,16 +59,16 @@ const Entrance = () => {
                 </div>
             </form>
             <img 
-                src={backSVG} 
+                src={ImgService.backSVG} 
                 alt="go back" 
                 className="backEntranceMark" 
-                onClick={() => {dispatch(toggleEntranceState()); dispatch(disabledEye3())}}
+                onClick={() => navigate(-1)}
             />
             <img 
                 src={
                     isDisibleEye
-                    ?   eyeAbles
-                    :   eyeDisible
+                    ?   ImgService.eyeAbles
+                    :   ImgService.eyeDisible
                 } 
                 alt="check password" 
                 className="eye3" 

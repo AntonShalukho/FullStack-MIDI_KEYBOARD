@@ -31,10 +31,10 @@ const Song: FC<SongInterface> = (props) => {
   )
 }
 
-const Desk = () => {
-  const isSong1 = useSelector(selectorSong1)
-  const isSong2 = useSelector(selectorSong2)
-  const isSong3 = useSelector(selectorSong3) 
+const Desk: FC = () => {
+  const isSong1: boolean = useSelector(selectorSong1)
+  const isSong2: boolean = useSelector(selectorSong2)
+  const isSong3: boolean = useSelector(selectorSong3) 
 
   const dispatch = useDispatch()
   

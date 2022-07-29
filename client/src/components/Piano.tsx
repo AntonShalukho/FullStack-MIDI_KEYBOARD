@@ -1,17 +1,20 @@
+import React, { FC } from 'react'
 import {whiteKeys, blackKeys} from '../appService/Keys'
-import Button from '../UI/Button'
+// import Button from '../UI/Button'
 import Account from './Account'
 import Desk from './Desk'
 import WhiteKey from './WhiteKey'
 import BlackKey from './BlackKey'
-import IconsDesk from './IconsDesk'
-import { useSelector } from 'react-redux'
-import { selectorChangeIcon } from '../store'
+// import IconsDesk from './IconsDesk'
+// import { useSelector } from 'react-redux'
+// import { selectorChangeIcon } from '../store'
+import { Outlet, useNavigate } from 'react-router-dom'
 
 
 
-const Piano = () => {   
-    const isIcon = useSelector(selectorChangeIcon)
+const Piano: FC = () => {   
+    // const isIcon = useSelector(selectorChangeIcon)
+    const navigate = useNavigate()
   
     return (
       <div  className='root4'>
@@ -40,10 +43,9 @@ const Piano = () => {
               />
             )}
         </div>
-        <Button buttClass='buttonExit' text='Exit' />
+        <div className='buttonExit' onClick={() => navigate('/')}>Exit</div> 
         <Account/>
-        {isIcon && <IconsDesk/>}
-        
+        <Outlet/>
       </div>
     )
 }

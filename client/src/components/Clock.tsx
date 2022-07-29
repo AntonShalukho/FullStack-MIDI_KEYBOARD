@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 
-type Props = {}
 
-const Clock = (props: Props) => {
+const Clock: FC = () => {
 
     const [clock, setClock] = useState(new Date().toLocaleTimeString())
 

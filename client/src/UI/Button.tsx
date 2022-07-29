@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { Children } from 'react'
+import { RouteObject } from 'react-router-dom'
 
 type Props = {
     buttClass: string,
     text: string,
+    children?: RouteObject,
     toggle?: () => void
 }
 
