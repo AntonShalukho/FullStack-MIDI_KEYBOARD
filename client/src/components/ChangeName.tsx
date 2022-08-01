@@ -4,6 +4,9 @@ import { useDispatch } from 'react-redux'
 import { nameExpretion } from '../appService/RegExpr'
 import ValidError from '../UI/ValidError'
 import { toggleChangeNameComponent } from '../store/slices/ChangeNameSlice'
+import AuthController from '../appService/AuthController'
+import { changeUserName } from '../store/slices/UserNameSlice'
+import { LocalUserInterface } from '../interfaces/LocalUser'
 
 interface ChangeNameInterface {
     name: string,
@@ -13,8 +16,16 @@ interface ChangeNameInterface {
 export const ChangeName: FC = () => {
     const dispatch = useDispatch()
     const {register, handleSubmit, getValues, formState: {errors}} = useForm<ChangeNameInterface>()
-    const onSubmit: SubmitHandler<ChangeNameInterface> = (data) => {
-
+    const onSubmit: SubmitHandler<ChangeNameInterface> = async (data) => {
+        const {newName} = data;
+        const controller = new AuthController();
+        const respons = await controller.changeName(newName);
+        if(respons) {
+            dispatch(changeUserName(newName))
+            const storage: Array<LocalUserInterface> | undefined = JSON.parse(localStorage.getItem('users') as string)
+            storage ? storage.map(user => {if(user.isLog) user.name = newName}) : console.error('User was not authorized')
+            localStorage.setItem('users', JSON.stringify(storage))
+        }
     }
 
     const URL = 'https://raw.githubusercontent.com/AntonSheluho/midi-keyBoard-react.ts/main/src/png/x_cross_delete_remove_icon_144023.svg'

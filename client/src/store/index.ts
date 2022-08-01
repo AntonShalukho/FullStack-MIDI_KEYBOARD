@@ -9,6 +9,7 @@ import ChangeIconSlice from './slices/ChangeIconSlice'
 import AccountIconSlice from './slices/AccountIconSlice'
 import ChangeNameSlice from './slices/ChangeNameSlice'
 import RegistrationMessageSlice from './slices/RegistrationMessageSlice'
+import UserNameSlice from './slices/UserNameSlice'
 
 const rootReducer = combineReducers({
     eye3: Eye3Slice,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
     accountIcon: AccountIconSlice,
     changeName: ChangeNameSlice,
     registrationMessage: RegistrationMessageSlice,
+    username: UserNameSlice,
 })
 
 const store = configureStore({
@@ -43,5 +45,6 @@ export const selectorChangeIcon = (state: RootState) => state.isIcon.value
 export const selectorAccountIcon = (state: RootState) => state.accountIcon.src
 export const selectorChangeName = (state: RootState) => state.changeName.value
 export const selectorRegistrationMessage = (state: RootState) => state.registrationMessage.value
+export const selectorUserName = (state: RootState) => state.username.username
 
 export default store

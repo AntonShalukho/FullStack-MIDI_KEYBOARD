@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { SliceInterface } from "./SliceInterface";
+import { SliceInterface } from "../../interfaces/SliceInterface";
 
 const initialState: SliceInterface = {
     value: false

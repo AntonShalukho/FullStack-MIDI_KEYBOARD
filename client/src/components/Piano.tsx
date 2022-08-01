@@ -9,12 +9,19 @@ import BlackKey from './BlackKey'
 // import { useSelector } from 'react-redux'
 // import { selectorChangeIcon } from '../store'
 import { Outlet, useNavigate } from 'react-router-dom'
+import AuthController from '../appService/AuthController'
 
 
 
 const Piano: FC = () => {   
     // const isIcon = useSelector(selectorChangeIcon)
     const navigate = useNavigate()
+
+    async function logout() {
+      const controller = new AuthController();
+      const response = await controller.logout();
+      navigate('/')
+    }
   
     return (
       <div  className='root4'>
@@ -43,7 +50,7 @@ const Piano: FC = () => {
               />
             )}
         </div>
-        <div className='buttonExit' onClick={() => navigate('/')}>Exit</div> 
+        <div className='buttonExit' onClick={() => logout()}>Exit</div> 
         <Account/>
         <Outlet/>
       </div>

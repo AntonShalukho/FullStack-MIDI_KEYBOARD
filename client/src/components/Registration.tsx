@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import ImgService from '../appService/ImgService'
 import AuthController from '../appService/AuthController'
 import { toggleRegistrationMessage } from '../store/slices/RegistrationMessageSlice'
+import { LocalUserInterface } from '../interfaces/LocalUser'
 
 interface RegistrationInterface {
     name: string,
@@ -36,12 +37,16 @@ const Registration = () => {
         const controller = new AuthController();
         const respons = await controller.registration(name, email, password)
         if(respons) {
+            const storage: Array<LocalUserInterface> | undefined = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('user') as string) : undefined
+            if (storage) {
+                storage.push({'name': name, 'email': email, 'isLog': false})
+                localStorage.setItem('users', JSON.stringify(storage))
+            } else { localStorage.setItem('users', JSON.stringify([{'name': name, 'email': email, 'isLog': false}])) }
             navigate(-1);
             dispatch(toggleRegistrationMessage())
             setTimeout(() => {dispatch(toggleRegistrationMessage())}, 2000)
         }
     }
-
 
   return (
     <div className="root2">

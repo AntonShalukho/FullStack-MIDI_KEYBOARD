@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleIconsWrap } from '../store/slices/ChangeIconSlice'
-import { selectorAccountIcon, selectorChangeName } from '../store'
+import { selectorAccountIcon, selectorChangeName, selectorUserName } from '../store'
 import { useNavigate } from 'react-router-dom'
 import { ChangeName } from './ChangeName'
 import { toggleChangeNameComponent } from '../store/slices/ChangeNameSlice'
@@ -12,6 +12,7 @@ const Account = () => {
     const linkWrapRef = useRef<HTMLDivElement>(null)
     const accountIcon: string = useSelector(selectorAccountIcon)
     const isChangeName: boolean = useSelector(selectorChangeName)
+    const username: string = useSelector(selectorUserName)
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -50,6 +51,7 @@ const Account = () => {
                     ?   (
                             <>
                                 <div className="welcome">Welcome</div>
+                                <div className="welcome">{username}</div>
                                 <div onClick={() => toggleIconWrap()} className='links link1'>Change Avatar</div>
                                 <div onClick={() => dispatch(toggleChangeNameComponent())} className='links link2'>Change Name</div>
                             </>
