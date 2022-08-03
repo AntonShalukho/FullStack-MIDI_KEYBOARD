@@ -4,44 +4,60 @@ import { selectorSong1, selectorSong2, selectorSong3 } from '../store'
 import { toggleSongView, disableSong1 } from '../store/slices/Song1Slice'
 import { toggleSong2View, disableSong2 } from '../store/slices/Song2Slice'
 import { toggleSong3View, disableSong3 } from '../store/slices/Song3Slice'
-import Button from '../UI/Button'
-import { SongService } from '../appService/SongService'
+// import Button from '../UI/Button'
+import { SongObjType, SongService } from '../appService/SongService'
 
 interface SongInterface {
-  songText?: string
+  song?: SongObjType,
+  autoPlay?: (song: string) => void | undefined,
+  stopPlaying: () => void,
 }
 
 const Song: FC<SongInterface> = (props) => {
   const dispatch = useDispatch()
 
   function toggleSongs() {
+    props.stopPlaying()
     dispatch(disableSong1())
     dispatch(disableSong2())
     dispatch(disableSong3())
   }
 
+  function getAudio() {
+    if(props.autoPlay !== undefined && props.song !== undefined) {
+      props.autoPlay(props.song?.songCode)
+    }
+  }
+
   return (
     <div style={{display: 'contents'}}>
-      <div className="text">{props.songText}</div>
+      <div className="text">{props.song?.songText}</div>
       <div className="buttWrapper">
-        <Button buttClass='buttPlay' text='Play' />
-        <Button buttClass='buttPlay' text='Back' toggle={toggleSongs} />
+        <div className='buttPlay' onClick={getAudio} >Play</div>
+        {/* <Button buttClass='buttPlay' text='Play' /> */}
+        <div className='buttPlay' onClick={toggleSongs} >Back</div>
+        {/* <Button buttClass='buttPlay' text='Back' toggle={toggleSongs} /> */}
       </div>
     </div>
   )
 }
 
-const Desk: FC = () => {
+type DeskProps = {
+  autoPlay: (song: string) => void,
+  stopPlaying: () => void
+} 
+
+const Desk: FC<DeskProps> = (props) => {
   const isSong1: boolean = useSelector(selectorSong1)
   const isSong2: boolean = useSelector(selectorSong2)
   const isSong3: boolean = useSelector(selectorSong3) 
 
   const dispatch = useDispatch()
   
-  function getTrulySong(): string | undefined {
-    if(isSong1) return SongService.songText1
-    if(isSong2) return SongService.songText2
-    if(isSong3) return SongService.songText3
+  function getTrulySong(): SongObjType | undefined {
+    if(isSong1) return SongService.song1
+    if(isSong2) return SongService.song2
+    if(isSong3) return SongService.song3
   }
 
   return (
@@ -56,7 +72,7 @@ const Desk: FC = () => {
           </div>
           )
         : (
-          <Song songText={getTrulySong()}/>
+          <Song song={getTrulySong()} autoPlay={props.autoPlay} stopPlaying={props.stopPlaying} />
         )
       }
     </div>

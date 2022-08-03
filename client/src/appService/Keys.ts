@@ -24,7 +24,7 @@ import fa2D from '../audio/right_piano/fa2D.mp3'
 import sol2D from '../audio/right_piano/sol2D.mp3'
 import lya2D from '../audio/right_piano/lya2D.mp3'
 
-type KeyProps = {
+export type KeyProps = {
     keyClass: string,
     keyStyle: string,
     keyName: string,

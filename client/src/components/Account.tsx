@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { FC, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleIconsWrap } from '../store/slices/ChangeIconSlice'
 import { selectorAccountIcon, selectorChangeName, selectorUserName } from '../store'
@@ -7,7 +7,12 @@ import { ChangeName } from './ChangeName'
 import { toggleChangeNameComponent } from '../store/slices/ChangeNameSlice'
 import ImgService from '../appService/ImgService'
 
-const Account = () => {
+interface LeadEventListenerInterface {
+    addEvent: () => void,
+    removeEvent: () => void
+}
+
+const Account: FC = () => {
     const imgRef = useRef<HTMLImageElement>(null)
     const linkWrapRef = useRef<HTMLDivElement>(null)
     const accountIcon: string = useSelector(selectorAccountIcon)

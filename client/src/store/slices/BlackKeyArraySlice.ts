@@ -4,7 +4,7 @@ import RefKeyInterface from "../../interfaces/RefKeyInterface";
 const initialState: Array<RefKeyInterface> = [];
 
 const BlackKeyArraySlice = createSlice({
-    name: 'blackKeyState',
+    name: 'blackKeyArray',
     initialState,
     reducers: {
         addKey: (state, action) => {

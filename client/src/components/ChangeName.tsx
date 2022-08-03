@@ -13,6 +13,10 @@ interface ChangeNameInterface {
     newName: string
 }
 
+interface LeadEventListenerInterface {
+    addEvent: () => void
+} 
+
 export const ChangeName: FC = () => {
     const dispatch = useDispatch()
     const {register, handleSubmit, getValues, formState: {errors}} = useForm<ChangeNameInterface>()
@@ -32,7 +36,7 @@ export const ChangeName: FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='linksWrap wrapName wrapNameActive'>
-        <img src={URL} className='nameImgClose' onClick={() => dispatch(toggleChangeNameComponent())} />
+        <img src={URL} className='nameImgClose' onClick={() => {dispatch(toggleChangeNameComponent())}} />
         <input
             {...register('name', 
                 {

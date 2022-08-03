@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useRef } from 'react';
+import RefKeyInterface from '../interfaces/RefKeyInterface';
 // import { changeBlackKeyUp, changeBlackKeyDown } from '../functions/KeyboardPianoFunctions';
 
 
@@ -7,12 +8,18 @@ type Props = {
     audio: HTMLAudioElement,
     keyClass: string,
     keyStyle: string,
-    keyName: string 
+    keyName: string ,
+    name: string
+    callback: (callbackAgrum: RefKeyInterface) => void
 }
 
-const BlackKey: FC<Props> = ({id: name, audio: audio, keyClass: keyClass, keyStyle: keyStyle, keyName: keyName}) => {
+const BlackKey: FC<Props> = ({id: name, audio: audio, keyClass: keyClass, keyStyle: keyStyle, keyName: keyName, name: key, callback}) => {
 
   const ref = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    callback({ref, audio, type: 'black', name: key})
+  })
 
   // useEffect(() => {
   //   document.addEventListener('keydown', keyDown)

@@ -10,6 +10,8 @@ import AccountIconSlice from './slices/AccountIconSlice'
 import ChangeNameSlice from './slices/ChangeNameSlice'
 import RegistrationMessageSlice from './slices/RegistrationMessageSlice'
 import UserNameSlice from './slices/UserNameSlice'
+import WhiteKeyArraySlice from './slices/WhiteKeyArraySlice'
+import BlackKeyArraySlice from './slices/BlackKeyArraySlice'
 
 const rootReducer = combineReducers({
     eye3: Eye3Slice,
@@ -23,6 +25,8 @@ const rootReducer = combineReducers({
     changeName: ChangeNameSlice,
     registrationMessage: RegistrationMessageSlice,
     username: UserNameSlice,
+    whiteKeyArray: WhiteKeyArraySlice,
+    blackKeyArray: BlackKeyArraySlice,
 })
 
 const store = configureStore({
@@ -46,5 +50,7 @@ export const selectorAccountIcon = (state: RootState) => state.accountIcon.src
 export const selectorChangeName = (state: RootState) => state.changeName.value
 export const selectorRegistrationMessage = (state: RootState) => state.registrationMessage.value
 export const selectorUserName = (state: RootState) => state.username.username
+export const selectorWhiteKeyArray = (state: RootState) => state.whiteKeyArray
+export const selectorBlackKeyArray = (state: RootState) => state.blackKeyArray
 
 export default store

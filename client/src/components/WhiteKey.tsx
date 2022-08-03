@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useRef } from 'react';
+import { KeyProps } from '../appService/Keys';
 import RefKeyInterface from '../interfaces/RefKeyInterface';
-// import { changeKeyDown, changeKeyUp } from '../functions/KeyboardPianoFunctions';
 
 type Props = {
     id: string,
@@ -8,16 +8,17 @@ type Props = {
     keyClass: string,
     keyStyle: string,
     keyName: string ,
+    name: string,
     callback: (callbackAgrum: RefKeyInterface) => void
 }
 
 
-const Key: FC<Props> = ({id: name, audio: audio, keyClass: keyClass, keyStyle: keyStyle, keyName: keyName, callback}) => {
+const Key: FC<Props> = ({id: name, audio: audio, keyClass: keyClass, keyStyle: keyStyle, keyName: keyName, name: key, callback}) => {
 
   const ref = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    callback({ref, audio})
+    callback({ref, audio, type: 'white', name: key})
   })
 
   // useEffect(() => {
