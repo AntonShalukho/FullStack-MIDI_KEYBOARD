@@ -59,8 +59,6 @@ const Desk: FC = () => {
           <Song songText={getTrulySong()}/>
         )
       }
-      
-            
     </div>
   )
 }

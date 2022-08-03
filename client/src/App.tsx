@@ -12,16 +12,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <Routes>
-        <Route path='' element={<FirstPage/>}>
-          <Route path='/registration' element={<Registration/>} />
-          <Route path='/entrance' element={<Entrance/>} />
-        </Route>
-        <Route path='/piano' element={<Piano/>}>
-          <Route path='/piano/icons' element={<IconsDesk/>} />
-        </Route> 
-      </Routes>
-    </div>
+        <Routes>
+          <Route path='' element={<FirstPage/>}>
+            <Route path='/registration' element={<Registration/>} />
+            <Route path='/entrance' element={<Entrance/>} />
+          </Route>
+          <Route path='/piano' element={<Piano/>}>
+            <Route path='/piano/icons' element={<IconsDesk/>} />
+          </Route> 
+        </Routes>
+      </div>
   );
 }
 }
