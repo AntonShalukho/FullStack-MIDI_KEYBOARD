@@ -8,6 +8,7 @@ import ImgService from '../appService/ImgService'
 import AuthController from '../appService/AuthController'
 import { changeUserName } from '../store/slices/UserNameSlice'
 import { LocalUserInterface } from '../interfaces/LocalUser'
+import { AuthResponse } from '../models/response/AuthResponse'
 
 interface EntranceInterface {
     email: string,
@@ -22,16 +23,17 @@ const Entrance: FC = () => {
     const {register, handleSubmit} = useForm<EntranceInterface>()
     const onSubmit: SubmitHandler<EntranceInterface> = async (data) => {
         const {email, password} = data;
-        const controller = new AuthController()
-        const respons = await controller.login(email, password)
+        const respons = await AuthController.login(email, password)
         if(respons) {
-            let storage: Array<LocalUserInterface> | undefined = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users') as string)  : undefined
-            if(storage) {
-                storage.map(user => {if(user.email === email) {user.isLog = true} else {user.isLog = false}} )
-                const username: LocalUserInterface | undefined = storage.find(user => user.email === email)
-                username ? dispatch(changeUserName(username.name)) : dispatch(changeUserName(''))
-            } else console.error('Name not found')
+            // let storage: Array<LocalUserInterface> | undefined = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users') as string)  : undefined
+            // if(storage) {
+            //     storage.map(user => {if(user.email === email) {user.isLog = true} else {user.isLog = false}} )
+            //     const username: LocalUserInterface | undefined = storage.find(user => user.email === email)
+            //     username ? dispatch(changeUserName(username.name)) : dispatch(changeUserName(''))
+            // } else console.error('Name not found')
+            console.log(respons)
             navigate('/piano')
+            dispatch(changeUserName(respons as string))
         }
     }
 

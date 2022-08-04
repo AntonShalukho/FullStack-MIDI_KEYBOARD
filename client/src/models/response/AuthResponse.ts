@@ -5,3 +5,13 @@ export interface AuthResponse {
     refreshToken: string,
     user: IUser
 }
+
+export interface AuthResponsLogin {
+    tokens: Tokens,
+    name: string
+}
+
+interface Tokens {
+    accessToken: string,
+    refreshToken: string,
+}

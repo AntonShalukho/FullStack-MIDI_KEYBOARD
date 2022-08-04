@@ -2,15 +2,16 @@ import AuthService from "./AuthService";
 
 export default class AuthController {
 
-    setTokenToLocStor(accessToken: string) {
+    static setTokenToLocStor(accessToken: string) {
         localStorage.setItem('token', accessToken)
     }
 
-    async registration(name: string, email: string, password: string): Promise<Boolean> {
+    static async registration(name: string, email: string, password: string): Promise<Boolean> {
         try {
             const respons = await AuthService.registration(name, email, password);
             console.log(respons)
             this.setTokenToLocStor(respons.data.accessToken)
+            
             return true
         } catch (e: any) {
             console.error('registration ', e.response?.data?.message);
@@ -18,18 +19,23 @@ export default class AuthController {
         }
     }
 
-    async login(email: string, password: string): Promise<Boolean> {
+    static async login(email: string, password: string): Promise<Boolean | string> {
         try {
+            console.log('start login')
             const respons = await AuthService.login(email, password);
-            this.setTokenToLocStor(respons.data.accessToken)
-            return true
+            console.dir(respons)
+            this.setTokenToLocStor(respons.data.tokens.accessToken)
+            console.log('setToken')
+            const username = respons.data.name
+            console.log('save username')
+            return username 
         } catch (e: any) {
             console.error('login ', e.response?.data?.message);
             return false
         }
     }
 
-    async logout() {
+    static async logout() {
         try {
             const respons = await AuthService.logout();
             localStorage.removeItem('token')
@@ -38,7 +44,7 @@ export default class AuthController {
         }
     }
 
-    async changeName(newName: string): Promise<Boolean> {
+    static async changeName(newName: string): Promise<Boolean> {
         try {
             const respons = await AuthService.changeName(newName)
             this.setTokenToLocStor(respons.data.accessToken)

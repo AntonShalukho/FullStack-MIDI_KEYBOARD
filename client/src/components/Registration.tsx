@@ -34,14 +34,14 @@ const Registration = () => {
 
     const onSubmit: SubmitHandler<RegistrationInterface> = async (data) => {
         const {name, email, password} = data;
-        const controller = new AuthController();
-        const respons = await controller.registration(name, email, password)
+        const respons = await AuthController.registration(name, email, password)
+        console.log(respons)
         if(respons) {
-            const storage: Array<LocalUserInterface> | undefined = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('user') as string) : undefined
-            if (storage) {
-                storage.push({'name': name, 'email': email, 'isLog': false})
-                localStorage.setItem('users', JSON.stringify(storage))
-            } else { localStorage.setItem('users', JSON.stringify([{'name': name, 'email': email, 'isLog': false}])) }
+            // const storage: Array<LocalUserInterface> | undefined = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('user') as string) : undefined
+            // if (storage) {
+            //     storage.push({'name': name, 'email': email, 'isLog': false})
+            //     localStorage.setItem('users', JSON.stringify(storage))
+            // } else { localStorage.setItem('users', JSON.stringify([{'name': name, 'email': email, 'isLog': false}])) }
             navigate(-1);
             dispatch(toggleRegistrationMessage())
             setTimeout(() => {dispatch(toggleRegistrationMessage())}, 2000)

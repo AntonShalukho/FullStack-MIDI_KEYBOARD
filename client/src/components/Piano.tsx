@@ -98,8 +98,7 @@ const Piano: FC = () => {
     }
 
     async function logout() {
-      const controller = new AuthController();
-      const response = await controller.logout();
+      const response = await AuthController.logout();
       navigate('/')
     }
 

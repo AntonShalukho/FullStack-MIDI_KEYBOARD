@@ -39,7 +39,7 @@ class UserService {
         }
 
         const tokens = await this.getToken(user)
-        return tokens
+        return {tokens, name: user.name}
     }
 
     async logout(refreshToken) {

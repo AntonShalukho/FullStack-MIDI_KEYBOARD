@@ -1,7 +1,7 @@
 import RefKeyInterface from "../interfaces/RefKeyInterface";
 
 export default class AutoPlay {
-    idArray: Array<number> = [];
+    idArray: Array<ReturnType<typeof setTimeout>> = [];
     ref: Array<RefKeyInterface | null>
 
     constructor(ref: Array<RefKeyInterface | null>) {
@@ -66,10 +66,10 @@ export default class AutoPlay {
             this.ref.forEach(el => {
                 if (item === el?.name) {
                     if(el.type === 'white') {
-                        let id = window.setTimeout(() => {
+                        let id: ReturnType<typeof setTimeout> = setTimeout(() => {
                             if(this.ref !== null) this.changeWhiteKeyDownStyle(el)
                     
-                            let id2 = setTimeout(() => {
+                            let id2: ReturnType<typeof setTimeout> = setTimeout(() => {
                                 if(this.ref !== null) this.changeWhiteKeyStyle(el)
                             }, 500)
                             this.idArray.push(id2);
@@ -77,10 +77,10 @@ export default class AutoPlay {
                         this.idArray.push(id)
                         time1 += 600;
                     } else if(el.type === 'black') {
-                        let id = window.setTimeout(() => {
+                        let id: ReturnType<typeof setTimeout> = setTimeout(() => {
                             if(this.ref !== null) this.changeBlackKeyDownStyle(el)
                     
-                            let id2 = setTimeout(() => {
+                            let id2: ReturnType<typeof setTimeout> = setTimeout(() => {
                                 if(this.ref !== null) this.changeBlackKeyStyle(el)
                             }, 500)
                             this.idArray.push(id2);

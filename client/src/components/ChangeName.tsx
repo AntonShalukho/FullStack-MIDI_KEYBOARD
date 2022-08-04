@@ -6,29 +6,26 @@ import ValidError from '../UI/ValidError'
 import { toggleChangeNameComponent } from '../store/slices/ChangeNameSlice'
 import AuthController from '../appService/AuthController'
 import { changeUserName } from '../store/slices/UserNameSlice'
-import { LocalUserInterface } from '../interfaces/LocalUser'
+// import { LocalUserInterface } from '../interfaces/LocalUser'
 
 interface ChangeNameInterface {
     name: string,
     newName: string
 }
 
-interface LeadEventListenerInterface {
-    addEvent: () => void
-} 
+// interface LeadEventListenerInterface {
+//     addEvent: () => void
+// } 
 
 export const ChangeName: FC = () => {
     const dispatch = useDispatch()
     const {register, handleSubmit, getValues, formState: {errors}} = useForm<ChangeNameInterface>()
     const onSubmit: SubmitHandler<ChangeNameInterface> = async (data) => {
         const {newName} = data;
-        const controller = new AuthController();
-        const respons = await controller.changeName(newName);
+        const respons = await AuthController.changeName(newName);
         if(respons) {
             dispatch(changeUserName(newName))
-            const storage: Array<LocalUserInterface> | undefined = JSON.parse(localStorage.getItem('users') as string)
-            storage ? storage.map(user => {if(user.isLog) user.name = newName}) : console.error('User was not authorized')
-            localStorage.setItem('users', JSON.stringify(storage))
+            dispatch(toggleChangeNameComponent())
         }
     }
 
@@ -55,11 +52,11 @@ export const ChangeName: FC = () => {
             {...register('newName', 
                 {
                     required: '',
-                    validate: {
-                        isSemular: (): boolean => {
-                            return getValues('name') === getValues('newName')
-                        }
-                    },
+                    // validate: {
+                    //     isSemular: (): boolean => {
+                    //         return getValues('name') === getValues('newName')
+                    //     }
+                    // },
                     pattern: {
                         value: nameExpretion,
                         message: 'Name can use letters'

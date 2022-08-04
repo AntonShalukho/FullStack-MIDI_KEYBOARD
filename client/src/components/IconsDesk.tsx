@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleIconsWrap } from '../store/slices/ChangeIconSlice'
 import getIcons from '../API/GetIcons'
@@ -13,7 +13,7 @@ type IconsObj = {
   image: string
 }
 
-const IconsDesk = () => {
+const IconsDesk: FC = () => {
   const isIconDis = useSelector(selectorChangeIcon);
   const dispatch = useDispatch();
 
