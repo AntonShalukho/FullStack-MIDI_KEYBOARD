@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 // import { toggleRegistrationState } from '../store/slices/RegistrationSlice'
 import { selectorRegistrationEye1, selectorRegistrationEye2 } from '../store'
@@ -27,8 +27,9 @@ const Registration = () => {
     const isDisibledEye2 = useSelector(selectorRegistrationEye2)
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const [borderColor, setBorderColor] = useState('')
 
-    const {register, handleSubmit, formState: {errors}, reset, getValues} = useForm<RegistrationInterface>({
+    const {register, handleSubmit, formState: {errors}, getValues} = useForm<RegistrationInterface>({
         mode: 'onBlur'
     })
 
@@ -46,6 +47,9 @@ const Registration = () => {
             dispatch(toggleRegistrationMessage())
             setTimeout(() => {dispatch(toggleRegistrationMessage())}, 2000)
         }
+        // navigate(-1);
+        //     dispatch(toggleRegistrationMessage())
+        //     setTimeout(() => {dispatch(toggleRegistrationMessage())}, 2000)
     }
 
   return (
@@ -147,10 +151,11 @@ const Registration = () => {
                         id="repeatPassword"
                         placeholder='Repeat password'  
                         className='formFactor'
-                        style={
-                            getValues('password') !== getValues('repeatPassword')
-                            ? {border: '2px solid red',  boxSizing: 'content-box', height: '28px'}
-                            : {border: '2px solid green',  boxSizing: 'content-box', height: '28px'}
+                        onChange={(e) => setBorderColor(e.target.value)}
+                        style= {
+                            getValues('password') === borderColor 
+                            ? {border: '2px solid green',  boxSizing: 'content-box', height: '28px'} 
+                            : {border: '2px solid red',  boxSizing: 'content-box', height: '28px'}
                         }
                     />
                     <ValidError errorsObject={errors.repeatPassword} errorsMessage={'Invalid password'} />

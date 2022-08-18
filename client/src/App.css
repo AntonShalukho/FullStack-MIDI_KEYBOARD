@@ -2,6 +2,11 @@
   --yellow: #ff9800;
 }
 
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
 .root2 {
   display: block;
   position: fixed;
@@ -35,6 +40,10 @@
   width: 23px;
   cursor: pointer;
   position: absolute;
+}
+
+input[type=password]::-ms-reveal {
+  display: none;
 }
 
 .eye1 {
@@ -180,6 +189,10 @@
   cursor: context-menu;
 }
 
+.root5 {
+  grid-area: personal;
+}
+
 .wrapper {
   position: absolute;
   top: 30px;
@@ -207,6 +220,7 @@
   height: 300px;
   position: absolute;
   top: 126px;
+  /* left: -100px; */
   left: 152px;
   z-index: 2;
   background-color: darkgray;
@@ -400,7 +414,21 @@
   row-gap: 70px;
 }
 
+/* .root4 { */
+  /* position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 70% 1fr;
+  grid-template-rows: 50% 50%;
+  grid-template-areas: "exit note personal"
+                      "empty piano empty"
+  ;
+  background: url(./png/png5.jpg); */
+/* } */
+
 .buttonExit {
+  grid-area: exit;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -427,6 +455,7 @@
 }
 
 .bodyShadow {
+  grid-area: exit, note, personal, empty, piano, empty;
   background-color: rgb(0 0 0 / 68%);
   position: absolute;
   top: 0px;
@@ -436,7 +465,8 @@
 }
 
 .note {
-  width: 70%;
+  grid-area: note;
+  width: 65%;
   height: 35%;
   background-color: #c5c5c5;
   z-index: 2;
@@ -481,6 +511,7 @@
   font-weight: bold;
   padding: 10px;
   font-family: 'Cinzel', serif;
+  word-break: break-all;
 }
 
 .buttWrapper {
@@ -497,7 +528,7 @@
   justify-self: end; 
   align-items: center; 
   align-self: end;
-  width: 8%; 
+  width: 12%; 
   height: 36px; 
   font-size: 22px;
   font-family: 'Cinzel', serif;
@@ -518,11 +549,12 @@
 }
 
 .piano {
+  grid-area: piano;
   display: flex; 
   flex-direction: row; 
   position: relative;
-  width: 1350px; 
-  height: 45%; 
+  width: 90%; 
+  height: 40%; 
   z-index: 2; 
 }
 
@@ -553,7 +585,8 @@
   border: 1px solid black; 
   background-color: white; 
   position: absolute; 
-  top: 0px
+  top: 0px;
+  font-size: 14px;
 }
 
 .backAvatar {
@@ -587,7 +620,7 @@
 }
 
 .iconsWrapperActive1 {
-  left: calc(-30vw + 550px);
+  left: calc(100vw - 1204px);
 }
 
 .iconsWrapperActive2 {
@@ -690,6 +723,7 @@ body {
   transition-duration: .2s;
   position: absolute;
   top: 0px;
+  text-decoration: none;
 }
 
 .button:hover {
@@ -704,10 +738,10 @@ body {
   left: 360px;
 }
 
-@media (max-width: 1300px) and (max-height: 610px) {
-  .piano {
+@media (max-width: 1280px) and (max-height: 610px) {
+  /* .piano {
     width: 1177px;
-  }
+  } */
 
   .iconsWrapper {
     top: 280px;
@@ -764,11 +798,11 @@ body {
 }
 
 .eye1 {
-    top: 15.85rem;
+    top: 191px;
 }
 
 .eye2 {
-    top: 19.7rem;
+    top: 253px;
 }
 
 .buttonRegistration {
@@ -792,7 +826,7 @@ body {
 }
 
 .eye3 {
-    top: 92px;
+    top: 111px;
     left: 224px;
 }
 
@@ -844,117 +878,26 @@ body {
     top: 0px;
     left: 0px;
 }
+
+.iconsWrapper {
+  width: 800px;
+  height: 300px;
 }
 
-@media (orientation: portrait) and (min-width: 480px) and (max-width: 900px) {
-
-  .root2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0px;
-    left: 0px;
+.iconsWrapperActive1 {
+  left: calc(100vw - 800px);
 }
 
-.entranceWrapperReg {
-    height: 525px;
-    width: 310px;
+.icon {
+  width: 90px;
+  height: 90px;
 }
 
-.invalidFormText {
-    left: 45px;
 }
 
-.invalidFormText1 {
-    top: 279px;
-}
 
-.invalidFormText2 {
-    top: 440px;
-}
 
-.eye1, .eye2 {
-    left: 231px;
-}
-
-.eye1 {
-    top: 323px;
-}
-
-.eye2 {
-    top: 397px;
-}
-
-  .root3 {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    top: 30%;
-    left: 0px;
-    width: 100vw;
-}
-
-.entranceWrapper {
-    width: 300px;
-    align-self: center;
-}
-
-.eye3 {
-    left: 224px;
-}
-
-  .clock {
-      padding-left: 15px;
-      font-size: 5vh;
-      width: 80%;
-  }
-
-  .picture {
-      background: url(./png/png3.jpg) repeat;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-evenly;
-  } 
-
-  .message {
-      top: calc((100vh - 50vh) - 94px);
-      left: calc((100vw - 50vw) - 225px);
-      width: 450px;
-      height: 188px;
-      font-size: 26px;
-  }
-
-  .pictureContent {
-      position: relative;
-      top: 0px;
-      left: 0px;
-      text-align: center;
-      padding: 0px 15px;
-      font-size: 28px;
-  }
-
-  .buttonWrapper {
-      display: flex;
-      width: 229px;
-      position: relative;
-      top: 0px;
-      left: 0px;
-      flex-direction: column;
-      align-items: center;
-      height: 169px;
-  }
-
-  .button {
-      position: relative;
-      top: 0px;
-      left: 0px;
-  }
-}
-
+/* @media (width: 650px) and (max-width: 900px) { */
 @media (orientation: landscape) and (min-width: 650px) and (max-width: 900px) {
 
   .root2 {
@@ -969,8 +912,9 @@ body {
 }
 
 .entranceWrapperReg {
-    height: 310px;
+    height: auto;
     width: 610px;
+    padding: 20px 0;
 }
 
 .entranceName {
@@ -996,15 +940,15 @@ body {
 }
 
 .eye1, .eye2 {
-    left: 231px;
+    left: 484px;
 }
 
 .eye1 {
-    top: 323px;
+    top: 191px;
 }
 
 .eye2 {
-    top: 397px;
+    top: 253px;
 }
 
 .buttonRegistration {
@@ -1028,12 +972,12 @@ body {
 }
 
 .eye3 {
-    top: 92px;
+    /* top: 92px; */
     left: 224px;
 }
 
   .wrapper {
-    top: calc((100vh - 80vh) - 40px);
+    /* top: calc((100vh - 80vh) - 40px); */
     width: 80px;
     height: 80px;
     right: calc((100vw - 93vw) - 40px);
@@ -1045,14 +989,14 @@ body {
 }
 
 .linksWrap {
-    top: calc((100vh - 45vh) - 125px);
+    /* top: calc((100vh - 45vh) - 125px); */
     height: 250px;
     left: calc((100vw - 88.1vw));
 }
 
 .linksWrapActive {
     left: calc((100vw - 118vw));
-    top: calc((100vh - 45vh) - 125px);
+    /* top: calc((100vh - 45vh) - 125px); */
 }
 
 .wrapName {
@@ -1063,7 +1007,7 @@ body {
 
 .iconsWrapper {
     left: calc((100vw - 50vw) - 316px);
-    top: 0px;
+    /* top: 0px; */
     width: 632px;
     height: 266px;
 }
@@ -1078,7 +1022,7 @@ body {
 }
 
   .root4 {
-    row-gap: 10px;
+    /* row-gap: 10px; */
     width: 100vw;
     height: 100vh;
 }
@@ -1108,9 +1052,9 @@ body {
     width: 10%;
 }
 
-.piano {
+/* .piano {
     width: 650px;
-}
+} */
 
 .key {
     font-size: 11px;
@@ -1146,8 +1090,6 @@ body {
   }
 
   .message {
-      top: 110px;
-      left: 144px;
       font-size: 19px;
   }
 
@@ -1178,20 +1120,27 @@ body {
   }
 }
 
-@media (orientation: portrait) and (min-width: 320px) and (max-width: 475px) {
+@media (orientation: portrait) and (min-width: 480px) and (max-width: 650px) {
 
   .root2 {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100vw;
+    height: 100vh;
     position: absolute;
-    top: 70px;
+    top: 0px;
     left: 0px;
 }
 
 .entranceWrapperReg {
-    height: 525px;
+    height: auto;
     width: 310px;
+    padding: 20px 0;
+}
+
+.entranceName {
+  row-gap: 10px;
 }
 
 .invalidFormText {
@@ -1211,11 +1160,123 @@ body {
 }
 
 .eye1 {
-    top: 323px;
+    top: 231px;
 }
 
 .eye2 {
-    top: 397px;
+    top: 305px;
+}
+
+.root3 {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 30%;
+  left: 0px;
+  width: 100vw;
+}
+
+.entranceWrapper {
+    width: 300px;
+    align-self: center;
+}
+
+.eye3 {
+    left: 224px;
+}
+
+  .clock {
+      padding-left: 15px;
+      font-size: 5vh;
+      width: 80%;
+  }
+
+  .picture {
+      background: url(./png/png3.jpg) repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+  } 
+
+  .message {
+      top: calc((100vh - 50vh) - 85px);
+      left: calc((100vw - 50vw) - 175px);
+      width: 350px;
+      height: 170px;
+      font-size: 26px;
+  }
+
+  .pictureContent {
+      position: relative;
+      top: 0px;
+      left: 0px;
+      text-align: center;
+      padding: 0px 15px;
+      font-size: 28px;
+  }
+
+  .buttonWrapper {
+      display: flex;
+      width: 229px;
+      position: relative;
+      top: 0px;
+      left: 0px;
+      flex-direction: column;
+      align-items: center;
+      height: 169px;
+  }
+
+  .button {
+      position: relative;
+      top: 0px;
+      left: 0px;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 320px) and (max-width: 475px) {
+
+  .root2 {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    position: absolute;
+    top: 70px;
+    left: 0px;
+}
+
+.entranceWrapperReg {
+    height: auto;
+    width: 310px;
+    padding: 20px 0;
+}
+
+.entranceName {
+  row-gap: 10px;
+}
+
+.invalidFormText {
+    left: 45px;
+}
+
+.invalidFormText1 {
+    top: 279px;
+}
+
+.invalidFormText2 {
+    top: 440px;
+}
+
+.eye1, .eye2 {
+    left: 231px;
+}
+
+.eye1 {
+    top: 231px;
+}
+
+.eye2 {
+    top: 304px;
 }
 
   .root3 {
@@ -1315,9 +1376,9 @@ body {
     width: 10%;
 }
 
-.piano {
+/* .piano {
     width: 650px;
-}
+} */
 
 .key {
     font-size: 11px;
@@ -1352,11 +1413,15 @@ body {
   } 
 
   .message {
-      top: 298px;
+      top: calc((100vh - 50vh) - 85px);
       left: calc((100vw - 50vw) - 155px);
+      /* top: 298px;
+      left: calc((100vw - 50vw) - 155px); */
       width: 310px;
-      height: 126px;
+      height: 170px;
       font-size: 19px;
+      /* width: 350px;
+    height: 170px; */
   }
 
   .pictureContent {
