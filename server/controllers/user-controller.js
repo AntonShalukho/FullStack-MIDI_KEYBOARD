@@ -1,6 +1,7 @@
 const ApiError = require("../exceptions/api-error");
 const UserService = require("../services/user-service");
-const {validationResult} = require('express-validator')
+const {validationResult} = require('express-validator');
+const UserModel = require('../models/user-model')
 
 class UserController {
     
@@ -52,22 +53,12 @@ class UserController {
             next(e)
         }
     }   
-    
-    async refresh(req, res, next) {
-        try {
-            const { refreshToken } = req.cookies;
-            const userData = await UserService.refresh(refreshToken);
-            res.cookie('refreshToken', userData.refreshToken, {maxAge: 90 * 24 * 60 * 1000, httpOnly: true})
-            return res.json(userData);
-        } catch (e) {
-            next(e)
-        }
-    }
 
+    // DEV REQUEST for ALL USERS
     async getUsers(req, res, next) {
         try {
-            // const users = UserModel.find()
-            res.json('Hello')
+            const users = await UserModel.find()
+            return res.json(users)
         } catch (e) {
             next(e)
         }
