@@ -35,10 +35,6 @@ const store = configureStore({
 
 type RootState = ReturnType<typeof store.getState>
 
-// export const selectors = {
-//     selectorEnrtance(state: RootState) {state.entrance.entrance},
-//     selectorRegistration(state: RootState) {state.regisrtation.registration},
-// }
 export const selectorEnrtanceEye = (state: RootState) => state.eye3.value
 export const selectorRegistrationEye1 = (state: RootState) => state.registrationEye1.value
 export const selectorRegistrationEye2 = (state: RootState) => state.registrationEye2.value

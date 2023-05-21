@@ -1,0 +1,66 @@
+.wrapper {
+  background: url("../../../../assets/static/png3.jpg") repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100vw;
+  height: 95vh;
+  position: relative;
+}
+
+.content {
+  color: yellow;
+  font-size: 44px;
+  z-index: 2;
+  transition-duration: 2s;
+}
+
+.firstTitle {
+  top: 10%; 
+  left: calc((100vw - 50vw) - 594px);
+}
+
+.secondTitle {
+  top: 10%; 
+  left: calc((100vw - 50vw) - 496px);
+}
+
+.thirdTitle { 
+  top: 0%; 
+  left: calc((100vw - 50vw) - 275px);
+}
+
+.buttonWrapper {
+  display: flex;
+  width: 500px;
+  align-items: center;
+  height: 169px;
+  justify-content: space-between;
+}
+
+.button {
+  background-color: #795548bf;
+  width: 190px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--yellow);
+  border-radius: 35px;
+  cursor: pointer;
+  transition-duration: .2s;
+  text-decoration: none;
+}
+
+.button:hover {
+  box-shadow: 0px 10px 13px #795548bf; top: -5px;;
+}
+
+.button:active {
+  box-shadow: 0px 5px 8px #795548bf; top: 0px;
+}
+
+/* .buttonLogOn {
+  left: 360px;
+} */
