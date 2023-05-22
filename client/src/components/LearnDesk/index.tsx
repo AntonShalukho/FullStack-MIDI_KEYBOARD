@@ -7,7 +7,7 @@ import { toggleSong3View } from '../../store/slices/Song3Slice'
 import { selectorSong1, selectorSong2, selectorSong3 } from '../../store'
 import { SongsData } from "./assets/SongsData"
 import { LearnDeskType, SongDataType } from './types'
-import styles from "./LeaernDesk.module.css"
+import styles from "./LearnDesk.module.css"
 
 export const LearnDesk: FC<LearnDeskType> = ({autoPlay, stopPlaying}) => {
   const isSong1: boolean = useSelector(selectorSong1)

@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { toggleChangeNameComponent } from '../../../../store/slices/ChangeNameSlice'
 import { changeUserName } from '../../../../store/slices/UserNameSlice'
@@ -9,10 +9,15 @@ import { ChangeNameFormInitialValues } from '../../consts'
 import { validationSchema } from '../../helpers/validationSchema'
 import { Input } from '../../../../UI/Input'
 import { Button } from '../../../../UI/Button/index'
+import { sendChangeName } from '../../../../service/api/changeName'
+import styles from "./ChangeNameForm.module.css"
+import classNames from 'classnames'
 
 
 
 export const ChangeNameForm: FC = () => {
+  const [newNameErrors, setNewNameError] = useState<string[]>([]) 
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const dispatch = useDispatch()
 
   const handleClose = () => {
@@ -20,12 +25,21 @@ export const ChangeNameForm: FC = () => {
   }
 
   const handleSubmit = (values: ChangeNameType) => {
-    // const {newName} = data;
-    //     // const respons = await AuthController.changeName(newName);
-    //     // if(respons) {
-    //     //     dispatch(changeUserName(newName))
-    //     //     dispatch(toggleChangeNameComponent())
-    //     // }
+    setNewNameError([])
+    const requestBody = {
+      newName: values.newName
+    }
+    setIsLoading(true)
+    sendChangeName(requestBody)
+      .then(() => {
+        dispatch(changeUserName(values.newName))
+        dispatch(toggleChangeNameComponent())
+      })
+      .catch(err => setNewNameError(prev => {
+        prev.push(err.response.message)
+        return prev
+      }))
+      .finally(() => setIsLoading(false))
   }
 
   return (
@@ -35,21 +49,26 @@ export const ChangeNameForm: FC = () => {
       validationSchema={validationSchema}
     >
       <Form>
-        <img src={CROSS} className='nameImgClose' onClick={handleClose} />
+        <img src={CROSS} className={styles.nameImgClose} onClick={handleClose} />
         <Input 
           name='name'
           placeholder='Your name'
-          className='links nameCases'
+          className={classNames(styles.links ,styles.nameCases)}
         />
         <Input 
           name='newName'
           placeholder='New name'
-          className='links nameCases'
+          className={classNames(styles.links ,styles.nameCases)}
+          errors={newNameErrors.length 
+            ? newNameErrors
+            : undefined 
+          }
         />
         <Button 
           variant='default'
           type="submit"
-          className='links caseButt'
+          className={classNames(styles.links ,styles.caseButt)}
+          isLoading={isLoading}
         >Change
         </Button>
       </Form>

@@ -3,13 +3,13 @@ import ManualPlay from "./ManualPlay";
 
 export const makeKeyDown = (ref: RefKeyType) => {
   ref.type === 'white' 
-        ? ManualPlay.changeKeyDown(ref) 
-        : ManualPlay.changeBlackKeyDown(ref);
+    ? ManualPlay.changeKeyDown(ref) 
+    : ManualPlay.changeBlackKeyDown(ref);
 }
 export const makeKeyUp = (ref: RefKeyType) => {
-ref.type === 'white' 
-      ? ManualPlay.changeKeyUp(ref) 
-      : ManualPlay.changeBlackKeyUp(ref);
+  ref.type === 'white' 
+    ? ManualPlay.changeKeyUp(ref) 
+    : ManualPlay.changeBlackKeyUp(ref);
 }
 
 export const keyDown = (code: string, keyRefs: Array<RefKeyType | null>): void => {

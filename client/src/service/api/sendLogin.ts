@@ -1,4 +1,5 @@
 import { post } from ".";
+import { AuthResponse } from "../models/response/AuthResponse";
 import { LOG_IN } from "./consts";
 import { ILogIn } from "./types";
 

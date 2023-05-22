@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-
+import React, { useEffect, useState } from 'react';
+import styles from "./Clock.module.css"
 
 export const Clock = () => {
   const [clock, setClock] = useState<string>(new Date().toLocaleTimeString())
@@ -12,6 +12,6 @@ export const Clock = () => {
   }, [])
 
   return (
-    <div className="clock">{clock}</div>
+    <div className={styles.clock}>{clock}</div>
   )
 }

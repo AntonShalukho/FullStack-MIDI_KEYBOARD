@@ -1,44 +1,49 @@
-import { Form, Formik } from 'formik'
 import React, { useState } from 'react'
+import { Form, Formik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 import { initialValues } from './consts'
 import { InitialValuesType } from './types'
 import { BackButton } from '../../UI/BackButton'
 import { Input } from '../../UI/Input'
 import { Button } from '../../UI/Button/index'
+import { sendLogin } from '../../service/api/sendLogin'
+import { setTokenToLocStor } from '../../assets/helpers'
+import { changeUserName } from '../../store/slices/UserNameSlice'
+import { useDispatch } from 'react-redux'
 import styles from "./LoginForm.module.css"
+import classNames from 'classnames'
 
 export const LoginForm = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
-    // const isDisibleEye = useSelector(selectorEnrtanceEye)
-    // const dispatch = useDispatch()
+  const [loginErrors, setLoginErrors] = useState<string[]>([])
+  const dispatch = useDispatch()
   const navigate = useNavigate()
-
-    // const {register, handleSubmit} = useForm<EntranceInterface>()
-    // const onSubmit: SubmitHandler<EntranceInterface> = async (data) => {
-    //     const {email, password} = data;
-    //     const respons = await AuthController.login(email, password)
-    //     if(respons) {
-            // let storage: Array<LocalUserInterface> | undefined = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users') as string)  : undefined
-            // if(storage) {
-            //     storage.map(user => {if(user.email === email) {user.isLog = true} else {user.isLog = false}} )
-            //     const username: LocalUserInterface | undefined = storage.find(user => user.email === email)
-            //     username ? dispatch(changeUserName(username.name)) : dispatch(changeUserName(''))
-            // } else console.error('Name not found')
-            // console.log(respons)
-            // navigate('/piano')
-            // dispatch(changeUserName(respons as string))
-    //     }
-    // }
   
   const handleSubmit = (values: InitialValuesType) => {
     setIsLoading(true)
+    const requestBody = {
+      email: values.email, 
+      password: values.password
+    };
+    sendLogin(requestBody)
+      .then(data => {
+        setTokenToLocStor(data.data.accessToken)
+        dispatch(changeUserName(data.data.user.name))
+        navigate('/piano')
+      })
+      .catch(err => {
+        setLoginErrors(prev => {
+          prev.push(err.response.message)
+          return prev
+        })
+        throw new Error(err.response.message)
+      })
 
   }
 
   return (
-    <div className="root3">
-        <div className="entranceWrapperReg entranceWrapper">
+    <div className={styles.root3}>
+        <div className={classNames(styles.entranceWrapperReg, styles.entranceWrapper)} >
           <BackButton/>
           <Formik
             initialValues={initialValues}
@@ -48,11 +53,19 @@ export const LoginForm = () => {
               <Input
                 name='email'
                 placeholder='Email'
+                errors={loginErrors.length
+                  ? loginErrors 
+                  : undefined
+                }
               />
               <Input
                 name='password'
                 placeholder='Password'
                 isPasswordType={true}
+                errors={loginErrors.length
+                  ? loginErrors 
+                  : undefined
+                }
               />
               <Button 
                 variant='default'

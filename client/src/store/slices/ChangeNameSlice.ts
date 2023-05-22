@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { SliceInterface } from "../../interfaces/SliceInterface";
+import { SliceType } from "../types";
 
 
-const initialState: SliceInterface = {
+const initialState: SliceType = {
     value: false
 }
 const ChangeNameSlice = createSlice({

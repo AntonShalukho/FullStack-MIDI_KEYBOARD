@@ -8,6 +8,7 @@ import { CROSS } from '../../assets/iconsUrls'
 import { getAvatars } from '../../service/api/getAvatars'
 import { BackButton } from '../../UI/BackButton'
 import styles from "./Avatars.module.css"
+import classNames from 'classnames'
 
 
 type IconsObj = {
@@ -32,7 +33,6 @@ export const Avatars: FC = () => {
       .catch(err => {
         throw new Error(err.response.message)
       })
-    // const arr = await getIcons()
     
   }
 
@@ -45,15 +45,15 @@ export const Avatars: FC = () => {
   }
 
   return (
-    <div className="iconsWrapper iconsWrapperActive1">
-        <div className="icons">
+    <div className={classNames(styles.iconsWrapper, styles.iconsWrapperActive1)}>
+        <div className={styles.icons}>
           <BackButton
             handleSideEffects={toggleIconWrap}
           />
             <img  
                 src={CROSS} 
                 alt="back" 
-                className="backAvatar" 
+                className={styles.backAvatar} 
                 onClick={() => {toggleIconWrap()}}
             />
             {isIconDis && icons.map((arr: IconsObj) => <Icons key={arr.image} src={arr.image} changeIcon={newAccountIcon} />)}

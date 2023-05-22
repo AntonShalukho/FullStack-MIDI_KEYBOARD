@@ -4,8 +4,7 @@ import { useDispatch } from "react-redux";
 import { disableSong1 } from "../../../../store/slices/Song1Slice";
 import { disableSong2 } from "../../../../store/slices/Song2Slice";
 import { disableSong3 } from "../../../../store/slices/Song3Slice";
-
-
+import styles from "./Song.module.css"
 
 export const Song = ({
   song,
@@ -29,10 +28,10 @@ export const Song = ({
 
   return (
     <div style={{display: 'contents'}}>
-      <div className="text">{song?.songText}</div>
-      <div className="buttWrapper">
-        <div className='buttPlay' onClick={getAudio} >Play</div>
-        <div className='buttPlay' onClick={toggleSongs} >Back</div>
+      <div className={styles.text}>{song?.songText}</div>
+      <div className={styles.buttWrapper}>
+        <div className={styles.buttPlay} onClick={getAudio} >Play</div>
+        <div className={styles.buttPlay} onClick={toggleSongs} >Back</div>
       </div>
     </div>
   )
