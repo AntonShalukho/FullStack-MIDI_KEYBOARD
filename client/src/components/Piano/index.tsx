@@ -19,7 +19,6 @@ export const Piano = ({
         }
       })
       if(flag) {
-        console.log('add keys')
         preveState?.push(ref)
       }
       return preveState
